@@ -15,15 +15,14 @@
             </div>
 
         <!-- Button directly below the welcome text -->
-        <div class="relative group inline-block" id="menuWrapper">
-            <a class="button" href="#">GET STARTED</a>
-        
-            <div id="dropdownMenu" class="absolute opacity-0 pointer-events-none left-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 top-full mt-3 w-72 bg-white shadow-xl rounded-2xl p-4 z-20 border">
+        <div class="relative inline-block" id="menuWrapper">
+            <a class="button inline-block" href="#" id="getStartedBtn">GET STARTED</a>
+            
+            <div class="absolute hidden left-0 top-full mt-3 w-72 bg-white shadow-xl rounded-2xl p-4 z-20 border" id="startedDropdown">
                 <ul class="space-y-1">
-                    
                     <li>
                         <a class="flex items-center gap-3 w-full text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 text-sm font-medium" 
-                        href="" 
+                        href="{% url 'about' %}" 
                         aria-label="Read about us">
                             <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.18 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-1.04-.01-1.9-2.78.58-3.37-1.18-3.37-1.18-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.03 1.52 1.03.9 1.51 2.36 1.07 2.94.82.09-.66.35-1.07.63-1.31-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.4.2 2.43.1 2.69.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.91.68 1.84 0 1.33-.01 2.41-.01 2.74 0 .26.16.58.67.48A10.012 10.012 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
@@ -32,12 +31,12 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://www.upwork.com/" 
-                            class="flex items-center gap-3 w-full text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 text-sm font-medium"
-                            aria-label="Go to Upwork">
+                        <a target="_blank" href="https://upwork.com/freelancers/michaelblaze29?mp_source=share" 
+                        class="flex items-center gap-3 w-full text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 text-sm font-medium"
+                        aria-label="Go to Upwork">
                             <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                            <title>Upwork</title>
-                            <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/>
+                                <title>Upwork</title>
+                                <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/>
                             </svg>
                             <span>Upwork Profile</span>
                         </a>
@@ -216,47 +215,35 @@
 
 
 <script>
-    // Get Started Button functionality
     const getStartedBtn = document.getElementById('getStartedBtn');
     const startedDropdown = document.getElementById('startedDropdown');
-    
-    // Skills Button functionality
-    const skillsBtn = document.getElementById('skillsBtn');
-    const skillsDropdown = document.getElementById('skillsDropdown');
-    
-    // Toggle dropdowns on button hover
-    [getStartedBtn, skillsBtn].forEach(btn => {
-        btn.addEventListener('mouseenter', () => {
-            if(btn === getStartedBtn) {
-                startedDropdown.classList.remove('hidden');
-                skillsDropdown.classList.add('hidden');
-            } else {
-                skillsDropdown.classList.remove('hidden');
+    let timeoutId;
+
+    getStartedBtn.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutId);
+        startedDropdown.classList.remove('hidden');
+    });
+
+    getStartedBtn.addEventListener('mouseleave', () => {
+        timeoutId = setTimeout(() => {
+            if (!startedDropdown.matches(':hover')) {
                 startedDropdown.classList.add('hidden');
             }
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-            setTimeout(() => {
-                if(!startedDropdown.matches(':hover') && !skillsDropdown.matches(':hover')) {
-                    startedDropdown.classList.add('hidden');
-                    skillsDropdown.classList.add('hidden');
-                }
-            }, 200);
-        });
+        }, 300);
     });
-    
-    // Keep dropdown open when hovering over it
-    [startedDropdown, skillsDropdown].forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', () => {
-            dropdown.classList.remove('hidden');
-        });
-        
-        dropdown.addEventListener('mouseleave', () => {
-            dropdown.classList.add('hidden');
-        });
+
+    startedDropdown.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutId);
+        startedDropdown.classList.remove('hidden');
+    });
+
+    startedDropdown.addEventListener('mouseleave', () => {
+        timeoutId = setTimeout(() => {
+            startedDropdown.classList.add('hidden');
+        }, 300);
     });
 </script>
+
 
 
 

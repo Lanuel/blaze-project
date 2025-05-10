@@ -22,7 +22,6 @@ from a_home.views import custom_404
 
 
 urlpatterns = [
-    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('3vablazin/', admin.site.urls),
     path('', include('a_home.urls')),
 ]

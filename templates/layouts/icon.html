@@ -1,0 +1,148 @@
+
+<div class="carousel-container">
+    <button class="nav-arrow left-arrow" id="leftArrow"><</button>
+    
+    <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Icon lists -->
+            {% for icon in icons %}
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <img src="{{ icon.image.url }}" alt="{{ icon.title }}">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <button class="nav-arrow right-arrow" id="rightArrow">></button>
+</div>
+
+<script>
+    // Get DOM elements
+    const carouselTrack = document.getElementById('carouselTrack');
+    const items = document.querySelectorAll('.carousel-item');
+    const leftArrow = document.getElementById('leftArrow');
+    const rightArrow = document.getElementById('rightArrow');
+    
+    let currentIndex = 0;
+    
+    // Calculate item width including gap
+    const getItemWidth = () => {
+        const item = items[0];
+        const itemStyle = window.getComputedStyle(item);
+        const itemWidth = item.offsetWidth;
+        const itemGap = 24; // 1.5rem = 24px gap
+        return itemWidth + itemGap;
+    };
+    
+    // Initialize carousel
+    function initCarousel() {
+        // Set first item as active
+        setActiveItem(2);
+        
+        // Center the first item
+        scrollToItem(2, 'auto');
+        
+        // Add click events to items
+        items.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                scrollToItem(index);
+                setActiveItem(index);
+            });
+        });
+        
+        // Add shadow and z-index based on position
+        updateItemsAppearance();
+    }
+    
+    // Scroll to specific item
+    function scrollToItem(index, behavior = 'smooth') {
+        const itemWidth = getItemWidth();
+        
+        carouselTrack.scrollTo({
+            left: index * itemWidth,
+            behavior: behavior
+        });
+    }
+    
+    // Set the active item
+    function setActiveItem(activeIndex) {
+        items.forEach((item, index) => {
+            if (index === activeIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+    
+    // Scroll carousel in a direction
+    function scrollCarousel(direction) {
+        currentIndex = Math.max(0, Math.min(items.length - 1, currentIndex + direction));
+        scrollToItem(currentIndex);
+        setActiveItem(currentIndex);
+    }
+    
+    // Update appearance of items based on position
+    function updateItemsAppearance() {
+        const trackRect = carouselTrack.getBoundingClientRect();
+        const trackCenter = trackRect.left + trackRect.width / 2;
+        
+        items.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenter = itemRect.left + itemRect.width / 2;
+            
+            // Calculate distance from center (0 = at center, 1 = at edge)
+            const distanceFromCenter = Math.abs(itemCenter - trackCenter) / (trackRect.width / 2);
+            
+            // Don't apply dynamic scaling if the item is active
+            if (!item.classList.contains('active')) {
+                // Scale between 0.85 and 0.95 based on distance from center
+                const scaleFactor = 0.95 - (distanceFromCenter * 0.1);
+                const finalScale = Math.max(0.85, scaleFactor);
+                item.style.transform = `scale(${finalScale})`;
+            } else {
+                item.style.transform = 'scale(1.15)';
+            }
+            
+            // Adjust opacity based on distance
+            const opacityFactor = 1 - (distanceFromCenter * 0.6);
+            item.style.opacity = Math.max(0.4, opacityFactor);
+            
+            // Set z-index to make closer items appear on top
+            item.style.zIndex = Math.floor((1 - distanceFromCenter) * 10);
+        });
+    }
+    
+    // Handle scroll events
+    carouselTrack.addEventListener('scroll', () => {
+        const itemWidth = getItemWidth();
+        const scrollPosition = carouselTrack.scrollLeft;
+        
+        // Calculate current index based on scroll position
+        const newIndex = Math.round(scrollPosition / itemWidth);
+        
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < items.length) {
+            currentIndex = newIndex;
+            setActiveItem(currentIndex);
+        }
+        
+        // Update appearance during scroll
+        requestAnimationFrame(updateItemsAppearance);
+    });
+    
+    // Add click events to arrows
+    leftArrow.addEventListener('click', () => scrollCarousel(-1));
+    rightArrow.addEventListener('click', () => scrollCarousel(1));
+    
+    // Initialize on load
+    window.addEventListener('load', initCarousel);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        scrollToItem(currentIndex, 'auto');
+        updateItemsAppearance();
+    });
+</script>

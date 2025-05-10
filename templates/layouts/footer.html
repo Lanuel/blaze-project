@@ -1,0 +1,130 @@
+{% load static %}
+
+<!-- Centered text for customer feedback -->
+<div class="text-center mx-auto">
+  <h3>
+    WHAT MY CLIENTS THINK ABOUT MY WORK
+  </h3>
+</div>
+
+<div class="testimonial-carousel">
+	<div class="testimonial-scroll">
+
+		<!-- Duplicate top container with fade effect -->
+		<div class="faded-feedbackup">
+			<div class="relative  flex items-center justify-center mx-auto max-w-4xl">
+			
+			<!-- Circle image overlay on the left -->
+			<div class="absolute -left-16 w-30 h-30 rounded-full overflow-hidden border-8 border-l-black shadow-lg z-10">
+				<img class="w-full h-full object-cover" src="{% static 'images/ape2.jpg' %}" alt="Customer photo">
+			</div>
+
+			<!-- Customer feedback container -->
+			<div class="rounded-2xl  bg-zinc-600 text-white p-6 w-[900px] h-[140px] pl-24 pr-24 overflow-hidden">
+				<p class="justify-between">
+				With over 10 years in the industry, I've had the chance
+				to work with amazing clients, bringing their ideas to life
+				in a way that truly represents who they are. I'm always
+				up for a challenge and love collaborating to create
+				something special. YOU INSPIRE ME💚💛❤🚀🚀
+				</p>
+			<!-- Customer name and star rating container -->
+			<div class="absolute bottom-4 left-0 w-full px-6 z-10">
+				<div class="flex justify-between items-end">
+					<!-- Customer name -->
+					<p class="text-white text-md leading-none pl-18 translate-y-4">- LIONEL MESSI</p>
+				
+					<!-- Star rating -->
+					<div class="flex space-x-1 text-amber-300">
+					{% for i in "stars" %}
+					<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+						<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.286 3.966c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.176 0l-3.38 2.455c-.784.57-1.838-.196-1.539-1.118l1.285-3.966a1 1 0 00-.364-1.118L2.05 9.394c-.782-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z"/>
+					</svg>
+					{% endfor %}
+					</div>
+				</div>
+				</div>
+			</div>
+
+			
+			</div>
+		</div>
+			
+		<!-- Middle container to wrap both image and feedback -->
+		{% for i in "1234" %}
+			<div class="relative flex items-center justify-center mx-auto max-w-4xl mb-3">
+				
+				<!-- Circle image overlay on the left -->
+				<div class="absolute -left-16 w-30 h-30 rounded-full overflow-hidden border-8 border-l-black shadow-lg z-10">
+				<img class="w-full h-full object-cover" src="{% static 'images/ape1.jpg' %}" alt="Customer photo">
+				</div>
+
+				<!-- Customer feedback container -->
+				<div class="rounded-2xl bg-zinc-600 text-white p-6 w-[900px] h-[140px] pl-24 pr-24 overflow-hidden">
+					<p class="justify-between">
+						Your brand deserves more than cookie-cutter design. I create bold,
+						standout visuals that get noticed and stick. From logos to packaging
+						and everything in between, I help businesses show up with confidence
+						and leave a mark that lasts.
+					</p>
+					<!-- Customer name and star rating container -->
+					<div class="absolute bottom-4 left-0 w-full px-6 z-10">
+						<div class="flex justify-between items-end">
+							<!-- Customer name -->
+							<p class="text-white text-md leading-none pl-18 translate-y-4">- PETER MCAUTHOR</p>
+						
+							<!-- Star rating -->
+							<div class="flex space-x-1 text-amber-300">
+							{% for i in "stars" %}
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.286 3.966c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.176 0l-3.38 2.455c-.784.57-1.838-.196-1.539-1.118l1.285-3.966a1 1 0 00-.364-1.118L2.05 9.394c-.782-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z"/>
+							</svg>
+							{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		{% endfor %}
+		
+		<!-- Duplicate bottom container with fade effect -->
+		<div class="faded-feedbackdown">
+			<div class="relative  flex items-center justify-center mx-auto max-w-4xl">
+			
+				<!-- Circle image overlay on the left -->
+				<div class="absolute -left-16 w-30 h-30 rounded-full overflow-hidden border-8 border-l-black shadow-lg z-10">
+					<img class="w-full h-full object-cover" src="{% static 'images/ape1.jpg' %}" alt="Customer photo">
+				</div>
+
+				<!-- Customer feedback container -->
+				<div class="rounded-2xl  bg-zinc-600 text-white p-6 w-[900px] h-[140px] pl-24 pr-24 overflow-hidden">
+					<p class="justify-between">
+					I really love your creative brand designs. Let's work together to bring my brand vision to life!
+					</p>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<footer class="w-full"> <!-- Fixed margin-bottom and removed ml-2 -->
+  <div class="flex items-center justify-center mx-auto w-full max-w-4xl px-4 mb-16"> <!-- Increased max-width and added padding -->
+      <!-- Logo with increased size and spacing -->
+      <div class="flex-shrink-0 mr-12"> <!-- Kept your margin-right -->
+          <a class="flex items-center" href="/">
+              <img class="h-10 md:h-12" src="{% static 'favicon.png' %}" alt="Michael Blaze Logo"/>
+          </a>
+      </div>
+
+      <!-- Button with adjusted spacing -->
+      <div class="relative group inline-block self-end mt-6 pb-2 brightness-100">
+          <a  
+             class="footer-button font-moderniz" 
+             href="#">
+             VISIT MY UPWORK PROFILE
+          </a>
+      </div>
+  </div>
+</footer>

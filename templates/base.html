@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Django Template">
+    <title>MichaelBlaze Graphics</title>
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="{% static 'favicon1.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/output.css' if debug else 'css/output.min.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+</head>
+
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="{% block class %}{% endblock %} overflow-x-hidden">
+	
+    {% include 'layouts/header.html' %}
+    {% include 'layouts/hero.html' %}
+
+    {% block content %}
+    {% endblock %}
+    
+    {% include 'layouts/footer.html' %}
+
+    {% block javascript %}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+</body>
+</html>

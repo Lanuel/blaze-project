@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Post image grid container -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 max-w-4xl mb-4 mx-auto mt-8 ">
+{% if post_list %}
+
+    {% for post in post_list|slice:"3" %}
+        
+        {% include 'layouts/post_article.html' %}
+
+    {% endfor %}
+{% else %}
+    <h2 class="text-lg mt-8">No posts available yet.</h2>
+{% endif %}
+    </div>
+
+    <!-- Icon list container -->
+    {% include 'layouts/icon.html' %}
+
+    <!-- Statistics Section -->
+    {% include 'layouts/stats.html' %}
+  
+{% endblock %}
+

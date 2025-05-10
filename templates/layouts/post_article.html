@@ -1,0 +1,26 @@
+<article class="w-9/12 sm:w-11/12 md:w-full lg:w-full mx-auto p-2">
+    <div class="relative border border-gray-500 hover:border-gray-200 bg-gray-700 overflow-hidden group h-72 sm:h-80 md:h-96 lg:h-[300px]">
+      <a href="" class="block w-full h-full group">
+        
+        <!-- Image -->
+        <div class="absolute inset-0 bg-gray-100">
+          <img src="{{ post.cover_image.url }}"
+               class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-20"
+               alt="{{ post.title }} | by {{ post.artist }}"
+               loading="lazy">
+        </div>
+  
+        <!-- Overlay text -->
+        <div class="relative h-full flex flex-col justify-end p-4 pb-2 bg-gradient-to-t from-black/60 to-transparent">
+          <h3 class="text-base sm:text-lg text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Vectorize
+          </h3>
+          <p class="text-xs sm:text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Convert master and low quality image to high resolution vector image
+          </p>
+        </div>
+  
+      </a>
+    </div>
+  </article>
+  

@@ -1,0 +1,411 @@
+@import './fonts.css';
+@import "tailwindcss";
+
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem auto;
+    overflow: hidden;
+}
+
+.carousel-viewport {
+    /* This creates the mask for partial visibility at edges */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 2rem 0;
+    /* Add spacing on sides to show partial items */
+    margin: 0 60px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem; /* 24px space between items */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Create a center point with padding so first/last items can center */
+    padding-left: calc(45% - 140px); /* half container width minus half item width */
+    padding-right: calc(50% - 140px);
+    /* Gradient mask for fading edges */
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+/* Item styling */
+.carousel-item {
+    position: relative;
+    flex: 0 0 280px; /* Fixed width */
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+    opacity: 0.7;
+    transform: scale(0.85);
+    background: #2a2a2a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 3px solid transparent;
+    cursor: pointer;
+}
+
+.carousel-item.active {
+    transform: scale(1.15);
+    opacity: 1;
+    z-index: 5;
+    border-color: #3b82f6; /* Blue highlight for active */
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+/* Highlight border effect */
+.carousel-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    border: 2px solid rgb(255, 255, 255);
+    pointer-events: none;
+    /* Hide the white border when item is active */
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-item.active::after {
+    opacity: 0; /* Hide white border when active */
+}
+
+.carousel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+.carousel-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.carousel-title {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    margin-top: 0.5rem;
+}
+
+.carousel-item:hover {
+    transform: scale(0.95);
+    box-shadow: 0 8px 25px rgba(240, 5, 5, 0.3);
+}
+
+.carousel-item.active:hover {
+    transform: scale(1.15);
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-viewport {
+        margin: 0 30px;
+    }
+    
+    .carousel-item {
+        flex: 0 0 200px;
+        height: 180px;
+    }
+    
+    .carousel-item img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .carousel-title {
+        font-size: 1rem;
+    }
+    
+    .nav-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
+
+.wide-text {
+    transform: scaleX(1.7); 
+    display: block;  
+    transform-origin: left;
+}
+.wide-text1 {
+    transform: scaleX(1.6); 
+    display: block;  
+    transform-origin: left;
+}
+
+.bg-image {
+    background-image: url('../images/bg_image.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+body {
+    @apply bg-black;
+    font-family: 'Futura-medium';
+}
+
+@keyframes slowPan {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-5%);
+    }
+}
+
+.animate-slow-pan {
+    animation: slowPan 25s linear infinite alternate;
+}
+
+h1 {
+    @apply text-4xl font-bold;
+    font-family: 'Futura-bold';
+}
+h2 {
+    @apply text-xl font-bold mb-2
+}
+h3 {
+    @apply text-lg font-bold text-sky-500;
+    font-family: 'Futura-bold';
+}
+p {
+    @apply mb-4;
+    font-family: 'Futura-medium';
+}
+.button, button, [type='submit'], [type='button'] {
+    @apply bg-sky-500 text-black font-bold rounded-xl shadow-lg transition-all cursor-pointer;
+}
+.button, button a, [type='submit'], [type='button'] {
+    @apply px-4 py-1 inline-block;
+}
+.footer-button, button, [type='submit'], [type='button'] {
+    @apply bg-green-500 text-white rounded-xl shadow-lg transition-all cursor-pointer;
+}
+.footer-button, button a, [type='submit'], [type='button'] {
+    @apply px-4 py-1 inline-block;
+}
+.button:hover, button:hover, [type='submit']:hover, [type='button']:hover {
+    @apply bg-rose-800 text-white
+}
+.button:active, button:active, [type='submit']:active, [type='button']:active {
+    @apply scale-95
+}
+
+input[type=file] {
+    @apply bg-white pl-0
+}
+
+/* Container for the link */
+.skills-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Popup container */
+.skills-popup {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    width: 220px; /* Increased width to accommodate percentage and bars */
+    text-align: left;
+    z-index: 10;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Show popup on hover */
+.skills-link:hover .skills-popup {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Styling for the skills list */
+.skills-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-popup li {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* Percentage text */
+.percentage {
+    display: inline-block;
+    width: 40px; /* Fixed width for alignment */
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+/* Progress bar for proficiency */
+.progress-bar {
+    display: inline-block;
+    height: 8px;
+    background: #007bff;
+    border-radius: 3px;
+    width: 0; /* Will be overridden by inline style */
+}
+
+/* Strength bar */
+.strength-bar {
+    display: block;
+    height: 8px;
+    background: #28a745; /* Green to differentiate from progress bar */
+    border-radius: 3px;
+    margin-top: 4px;
+    width: 0; /* Will be overridden by inline style */
+}
+
+/* Optional: Add a small triangle arrow */
+.skills-popup::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: #333;
+}
+
+/* Button styling */
+.skills-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.skills-button:hover {
+    background-color: #0056b3;
+}
+
+.testimonial-carousel {
+    height: 175px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+  }
+
+.testimonial-scroll {
+    animation: scrollTestimonials 24s infinite; /* Increased duration */
+  }
+
+@keyframes scrollTestimonials {
+    0%, 10% { /* Reduced pause time at top */
+      transform: translateY(0);
+    }
+    16.6%, 30% { /* Adjusted percentages for 5 cycles */
+      transform: translateY(-140px);
+    }
+    33.3%, 46.6% {
+      transform: translateY(-280px);
+    }
+    50%, 63.3% {
+      transform: translateY(-420px); /* Added third testimonial */
+    }
+    66.6%, 80% {
+      transform: translateY(-560px); /* Added fourth testimonial */
+    }
+    83.3%, 96.6% {
+      transform: translateY(-700px); /* Added fifth testimonial */
+    }
+    100% {
+      transform: translateY(-780px);
+    }
+  }
+
+/* Keep your existing fade styles */
+.faded-feedbackup {
+    mask-image: linear-gradient(to top, black 35%, black 20%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 0%, black 30%, transparent 50%);
+    opacity: 0.6;
+    margin-bottom: 12px;
+}
+
+.faded-feedbackdown {
+    mask-image: linear-gradient(to bottom, black 0%, black 30%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 35%, black 20%, transparent 40%);
+    opacity: 0.2;
+}

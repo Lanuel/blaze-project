@@ -144,7 +144,9 @@ if USE_CLOUDINARY:
     }
     CLOUDINARY_STORAGE = {
         'CLOUDINARY_URL': env('CLOUDINARY_URL'),
-        'SECURE': True,
+        'OPTIONS': {
+        'secure': True,  # ✅ Correct key and location
+    },
     }
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 else:

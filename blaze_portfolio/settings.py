@@ -17,6 +17,8 @@ from environ import Env
 env = Env()
 env.read_env()
 ENVIRONMENT = env('ENVIRONMENT', default='production')
+USE_CLOUDINARY = env.bool('USE_CLOUDINARY', default=False)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,10 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ENVIRONMENT == 'development':
-    DEBUG = True
-else:
-    DEBUG = False
+DEBUG = ENVIRONMENT == 'development'
 
 INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
 ALLOWED_HOSTS = ['*']
@@ -93,8 +92,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = True
-if ENVIRONMENT == "production" or POSTGRES_LOCALLY == True:
+if ENVIRONMENT == 'production' or env.bool('POSTGRES_LOCALLY', default=False):
     DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
 
 # Password validation
@@ -135,23 +133,23 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_URL = 'media/'
-
-if ENVIRONMENT == "production":
+if USE_CLOUDINARY:
     STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
         },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
         },
     }
+    CLOUDINARY_STORAGE = {
+        'CLOUDINARY_URL': env('CLOUDINARY_URL'),
+    }
+    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 else:
+    MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
-CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': env('CLOUDINARY_URL'),
-}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

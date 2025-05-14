@@ -7,8 +7,8 @@
 
 <!-- Testimonials -->
 <div class="testimonial-container">
-  {% for i in "12345" %}
-  <div class="testimonial-item">
+  
+  <div class="testimonial-item testimonial-item--active">
     <div class="relative flex items-center justify-center">
 
       <!-- Circle image overlay -->
@@ -19,10 +19,9 @@
       <!-- Testimonial card -->
       <div class="rounded-2xl bg-zinc-600 text-white p-6 w-[900px] h-[140px] pl-24 pr-24 flex flex-col justify-between">
         <p class="text-sm md:text-base">
-          Your brand deserves more than cookie-cutter design. I create bold,
-          standout visuals that get noticed and stick. From logos to packaging
-          and everything in between, I help businesses show up with confidence
-          and leave a mark that lasts.
+          I've been fortunate to know MichaelBlaze for quite some time and I'm always 
+          eager to team up with him on fresh projects. Michael's energy for crafting 
+          solutions is contagious.
         </p>
         <div class="flex justify-between items-center pt-4">
           <p class="text-white text-md">- PETER MCAUTHOR</p>
@@ -37,7 +36,63 @@
       </div>
     </div>
   </div>
-  {% endfor %}
+
+  <div class="testimonial-item testimonial-item--active">
+    <div class="relative flex items-center justify-center">
+
+      <!-- Circle image overlay -->
+      <div class="absolute -left-16 w-30 h-30 rounded-full overflow-hidden border-8 border-l-black shadow-lg z-10">
+        <img class="w-full h-full object-cover" src="{% static 'images/ape1.jpg' %}" alt="Customer photo">
+      </div>
+
+      <!-- Testimonial card -->
+      <div class="rounded-2xl bg-zinc-600 text-white p-6 w-[900px] h-[140px] pl-24 pr-24 flex flex-col justify-between">
+        <p class="text-sm md:text-base">
+          Working with Michael at Playlobby was a game-changer. As a Graphic Designer, 
+          he was instrumental in bridging the gap between product vision and technical 
+          execution. He ensured smooth execution and timely delivery.
+        </p>
+        <div class="flex justify-between items-center pt-4">
+          <p class="text-white text-md">- JOHN TERRY</p>
+          <div class="flex space-x-1 text-amber-300">
+            {% for i in "stars" %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.286 3.966c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.176 0l-3.38 2.455c-.784.57-1.838-.196-1.539-1.118l1.285-3.966a1 1 0 00-.364-1.118L2.05 9.394c-.782-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z"/>
+            </svg>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-item testimonial-item--active">
+    <div class="relative flex items-center justify-center">
+
+      <!-- Circle image overlay -->
+      <div class="absolute -left-16 w-30 h-30 rounded-full overflow-hidden border-8 border-l-black shadow-lg z-10">
+        <img class="w-full h-full object-cover" src="{% static 'images/ape1.jpg' %}" alt="Customer photo">
+      </div>
+
+      <!-- Testimonial card -->
+      <div class="rounded-2xl bg-zinc-600 text-white p-6 w-[900px] h-[140px] pl-24 pr-24 flex flex-col justify-between">
+        <p class="text-sm md:text-base">
+          Michael strikes the perfect balance between focusing on customer needs and tackling 
+          the technical intricacies that come with early-stage product development.
+        </p>
+        <div class="flex justify-between items-center pt-4">
+          <p class="text-white text-md">- LIONEL MESSI</p>
+          <div class="flex space-x-1 text-amber-300">
+            {% for i in "stars" %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.286 3.966c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.176 0l-3.38 2.455c-.784.57-1.838-.196-1.539-1.118l1.285-3.966a1 1 0 00-.364-1.118L2.05 9.394c-.782-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z"/>
+            </svg>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Footer -->
@@ -69,6 +124,6 @@
     }
 
     showNextTestimonial(); // Show the first on load
-    setInterval(showNextTestimonial, 2500); // Rotate every 2.5 seconds
+    setInterval(showNextTestimonial, 9500); // Rotate every 9.5 seconds
   });
 </script>

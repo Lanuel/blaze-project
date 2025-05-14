@@ -32,7 +32,6 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENVIRONMENT == 'production'
-DEBUG = ENVIRONMENT == 'production'
 
 INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
 ALLOWED_HOSTS = ['*']

@@ -382,62 +382,10 @@ input[type=file] {
     animation-delay: 1.2s;
 }
 
-@keyframes frameFallOut {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-}
+/* CSS for post images */
 
-@keyframes imageRiseUp {
-    0% {
-        opacity: 0;
-        transform: translateY(80%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-.frame-fall-out {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 75%;
-    border: 2px solid white;
-    z-index: 10;
-    pointer-events: none;
-    animation: frameFallOut 0.1s cubic-bezier(0.4, 0, 0.6, 1) forwards;
-}
-
-.image-rise-up {
-    opacity: 0;
-    transform: translateY(80%);
-    animation: imageRiseUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-    transition: opacity 0.3s ease;
-}
-
-.group:hover .image-rise-up {
-    opacity: 0.75;
-}
-
-.text-overlay h3,
-.text-overlay p {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.group:hover .text-overlay h3,
-.group:hover .text-overlay p {
-    opacity: 1;
-}
-
+/* CSS for testimonials */
 @keyframes riseFadeIn {
 0% {
     opacity: 0;

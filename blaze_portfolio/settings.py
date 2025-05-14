@@ -92,7 +92,9 @@ DATABASES = {
     }
 }
 
-
+if ENVIRONMENT == 'production' or env.bool('POSTGRES_LOCALLY', default=False):
+    DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
+    
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -116,7 +118,6 @@ if ENVIRONMENT == 'production' or DEBUG == False:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True

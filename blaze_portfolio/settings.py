@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ENVIRONMENT == 'development'
+DEBUG = ENVIRONMENT == 'production'
 
 INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
 ALLOWED_HOSTS = ['*']
@@ -113,7 +113,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+if ENVIRONMENT == 'production' or DEBUG == False:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 

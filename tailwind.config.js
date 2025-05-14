@@ -11,11 +11,10 @@ module.exports = {
       fontFamily: {
         'moderniz': ['moderniz', 'sans-serif'],
         'futura-medium': ['Futura-medium', 'sans-serif'],
-        'futura-bold': ['Futura-bold', 'sans-serif'],
+        'futura-book': ['Futura-book', 'sans-serif'],
       },
     },
   },
-  // Make sure Tailwind processes your input.css file
   corePlugins: {
     fontFamily: true, // Ensure this is enabled
   },

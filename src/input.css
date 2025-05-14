@@ -162,7 +162,6 @@
 }
 
 
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .carousel-viewport {
@@ -227,21 +226,16 @@ body {
 
 h1 {
     @apply text-4xl font-bold;
-    font-family: 'Futura-bold';
 }
 h2 {
     @apply text-xl font-bold mb-2
 }
 h3 {
     @apply text-lg font-bold text-sky-500;
-    font-family: 'Futura-bold';
 }
-p {
-    @apply mb-4;
-    font-family: 'Futura-medium';
-}
+
 .button, button, [type='submit'], [type='button'] {
-    @apply bg-sky-500 text-black font-bold rounded-xl shadow-lg transition-all cursor-pointer;
+    @apply bg-sky-500 text-black font-bold rounded-lg shadow-lg transition-all cursor-pointer;
 }
 .button, button a, [type='submit'], [type='button'] {
     @apply px-4 py-1 inline-block;
@@ -361,51 +355,120 @@ input[type=file] {
     background-color: #0056b3;
 }
 
-.testimonial-carousel {
-    height: 175px;
-    overflow: hidden;
-    position: relative;
-    margin: 20px 0;
-  }
-
-.testimonial-scroll {
-    animation: scrollTestimonials 24s infinite; /* Increased duration */
-  }
-
-@keyframes scrollTestimonials {
-    0%, 10% { /* Reduced pause time at top */
-      transform: translateY(0);
-    }
-    16.6%, 30% { /* Adjusted percentages for 5 cycles */
-      transform: translateY(-140px);
-    }
-    33.3%, 46.6% {
-      transform: translateY(-280px);
-    }
-    50%, 63.3% {
-      transform: translateY(-420px); /* Added third testimonial */
-    }
-    66.6%, 80% {
-      transform: translateY(-560px); /* Added fourth testimonial */
-    }
-    83.3%, 96.6% {
-      transform: translateY(-700px); /* Added fifth testimonial */
-    }
-    100% {
-      transform: translateY(-780px);
-    }
-  }
-
-/* Keep your existing fade styles */
-.faded-feedbackup {
-    mask-image: linear-gradient(to top, black 35%, black 20%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 30%, transparent 50%);
-    opacity: 0.6;
-    margin-bottom: 12px;
+/* Animation classes */
+.slide-in-left {
+    animation: slideInLeft 0.7s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
 }
 
-.faded-feedbackdown {
-    mask-image: linear-gradient(to bottom, black 0%, black 30%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 35%, black 20%, transparent 40%);
-    opacity: 0.2;
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Delays for sequential animation */
+.welcome-block-1 {
+    animation-delay: 0.7s;
+}
+
+.welcome-block-2 {
+    animation-delay: 0.9s;
+}
+
+.button-block-3 {
+    animation-delay: 1.2s;
+}
+
+@keyframes frameFallOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+}
+
+@keyframes imageRiseUp {
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.frame-fall-out {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75%;
+    border: 2px solid white;
+    z-index: 10;
+    pointer-events: none;
+    animation: frameFallOut 0.1s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+.image-rise-up {
+    opacity: 0;
+    transform: translateY(80%);
+    animation: imageRiseUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+    transition: opacity 0.3s ease;
+}
+
+.group:hover .image-rise-up {
+    opacity: 0.75;
+}
+
+.text-overlay h3,
+.text-overlay p {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.group:hover .text-overlay h3,
+.group:hover .text-overlay p {
+    opacity: 1;
+}
+
+@keyframes riseFadeIn {
+0% {
+    opacity: 0;
+    transform: translateY(80px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.testimonial-container {
+    position: relative;
+    height: 175px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.testimonial-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    opacity: 0;
+}
+
+.testimonial-item--active {
+    display: flex;
+    animation: riseFadeIn 1.8s ease-out forwards;
 }

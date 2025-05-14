@@ -32,6 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENVIRONMENT == 'production'
+DEBUG = ENVIRONMENT == 'production'
 
 INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
 ALLOWED_HOSTS = ['*']
@@ -94,7 +95,7 @@ DATABASES = {
 
 if ENVIRONMENT == 'production' or env.bool('POSTGRES_LOCALLY', default=False):
     DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
-
+    
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

@@ -1,37 +1,291 @@
-{% extends 'base.html' %}
+{% extends 'blank.html' %} 
+{% load static %}
+{% block content %} 
 
-{% block content %}
+<style>
+  .about {
+    padding: 100px 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
 
-<div class="block mx-auto md:p-12 px-4" style="max-width: 900px; margin-top: 4rem; margin-bottom: 1rem;"> <!-- Reduced max-width and padding -->
-  <div class="bg-white rounded-2xl md:drop-shadow-xl shadow-black w-full p-6"> <!-- Reduced padding -->
-      <h1 class="text-center text-2xl font-bold">About MichaelBlaze Graphics</h1>
-      <div style="background-color: #1ca3f1; padding: 16px; text-align: justify;"> <!-- Reduced padding -->
+  .about.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    <p>Welcome to <span class="highlight">MichaelBlaze Graphics</span>, your creative partner for high-quality, impactful design solutions. At 3verblazing Graphics, we are passionate about visual storytelling and crafting designs that elevate your brand and connect with your audience.</p>
+  .about__left {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    <h2>Who We Are</h2>
-    <p>MichaelBlaze Graphics is a professional graphic design studio dedicated to helping individuals, brands, and businesses bring their ideas to life through stunning visuals. With a deep understanding of design principles and a flair for creativity, we deliver custom design services that speak volumes.</p>
+  .about__left--title {
+    color: #00ffff;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 3.7rem);
+    margin-bottom: 8px;
+  }
 
-    <h2>What We Offer</h2>
-    <p>From logos and brand identity to flyers, posters, social media graphics, and promotional materials, we provide a wide range of design services tailored to your specific needs. Whether you're launching a new business or refreshing your visual identity, we've got you covered.</p>
+  .about__left--description {
+    color: #ccc;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    line-height: 1.5;
+  }
 
-    <h2>Why Choose 3verblazing Graphics?</h2>
-    <ul>
-      <li><span class="highlight">Creative Excellence</span>: Every design we create is thoughtful, original, and aligned with your goals.</li>
-      <li><span class="highlight">Professional Quality</span>: We maintain high standards of quality to ensure your brand stands out.</li>
-      <li><span class="highlight">Timely Delivery</span>: We respect deadlines and deliver your projects on time, every time.</li>
-      <li><span class="highlight">Client-Focused Service</span>: We work closely with you throughout the design process to ensure your satisfaction.</li>
-    </ul>
+  .about__left--description2 {
+    color: #ccc;
+    font-weight: 100;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.6;
+  }
 
-    <h2 class="mt-2">Our Mission</h2>
-    <p>At 3verblazing Graphics, our mission is to empower businesses and creatives with bold, effective visual content. We believe that good design tells a story, and we're here to help you tell yours in a powerful and professional way.</p>
+  .about__right {
+    flex: 1;
+    max-width: 400px;
+    height: auto;
+    border: 2px solid #ebebeb;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s;
+  }
+  
+  .about.visible .about__right {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .about__right img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    transition: transform 1.2s ease;
+  }
+  
+  .about__right:hover img {
+    transform: scale(1.03);
+  }
 
-    <h2>Join the 3verblazing Graphics Journey</h2>
-    <p>Whether you're a startup, a growing brand, or an individual looking to make a statement, 3verblazing Graphics is here to help. Let us turn your ideas into visual masterpieces that resonate and inspire.</p>
+  @media (max-width: 768px) {
+    .about {
+      flex-direction: column-reverse;
+      padding: 60px 20px;
+      gap: 40px;
+    }
+    
+    .about__right {
+      width: 70%;
+      max-width: 300px;
+    }
+    
+    .about__left {
+      text-align: center;
+    }
+  }
 
-    <p>Thank you for choosing 3verblazing Graphics — we're excited to bring your vision to life!</p>
+  /* Left gradient text effect */
+  .gradient-letter {
+    background: linear-gradient(to right, rgb(0, 195, 255), white);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: fadeInLeft 0.6s ease forwards;
+    font-size: inherit;
+    margin-right: -0.25em;
+  }
+
+    /* Delay each letter */
+  .gradient-letter:nth-child(1) { animation-delay: 0.1s; }
+  .gradient-letter:nth-child(2) { animation-delay: 0.15s; }
+  .gradient-letter:nth-child(3) { animation-delay: 0.2s; }
+  .gradient-letter:nth-child(4) { animation-delay: 0.25s; }
+  .gradient-letter:nth-child(5) { animation-delay: 0.3s; }
+  .gradient-letter:nth-child(6) { animation-delay: 0.35s; }
+  .gradient-letter:nth-child(7) { animation-delay: 0.4s; }
+  .gradient-letter:nth-child(8) { animation-delay: 0.45s; }
+
+  /* Keyframes left */
+  @keyframes fadeInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Right gradient text effect */
+  .gradient-letter2 {
+    background: linear-gradient(to left, rgb(0, 195, 255), white);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(30px);
+    animation-play-state: paused;
+    animation: fadeInLeft 3.6s ease forwards;
+    font-size: inherit;
+    margin-right: -0.25em;
+  }
+
+  /* Delay each letter */
+  .gradient-letter2:nth-child(1) { animation-delay: 3.1s; }
+  .gradient-letter2:nth-child(2) { animation-delay: 3.15s; }
+  .gradient-letter2:nth-child(3) { animation-delay: 3.2s; }
+  .gradient-letter2:nth-child(4) { animation-delay: 3.25s; }
+  .gradient-letter2:nth-child(5) { animation-delay: 3.3s; }
+  .gradient-letter2:nth-child(6) { animation-delay: 3.35s; }
+
+  /* Keyframes right */
+   @keyframes fadeInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  hr.my-16 {
+    opacity: 0;
+    transition: opacity 0.6s ease-out 0.6s;
+  }
+  
+  .about.visible hr.my-16 {
+    opacity: 1;
+  }
+
+  .about__info {
+    padding: 30px 300px 50px 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+</style>
+
+<section class="about">
+  <div class="about__left">
+    <h1 class="about__left--title text-4xl md:text-5xl xl:text-6xl">
+      <span class="gradient-letter">A</span>
+      <span class="gradient-letter">b</span>
+      <span class="gradient-letter">o</span>
+      <span class="gradient-letter">u</span>
+      <span class="gradient-letter">t</span>&nbsp;
+      <span class="gradient-letter">M</span>
+      <span class="gradient-letter">e</span>&nbsp;<span style="margin-left: -4px;" class="gradient-letter">.</span>
+    </h1>
+
+    <h3 class="about__left--description">
+      Hi, I'm Michael Blaze. I'm a teacher, graphics designer, and someone who
+      loves to create designs inspired by coffee.
+    </h3>
+    <p class="about__left--description2">
+      I'm also a video creator focusing on teaching web development and building
+      software applications. I specialize in simplifying the process of building 
+      enterprise applications with an emphasis on creating intuitive dashboards 
+      for both educational purposes and business solutions.
+    </p>
+    <hr class="my-16 border-gray-300 w-32 mx-auto lg:mx-0">
   </div>
+
+  <div class="about__right">
+    <img
+      alt="Michael Blaze Portrait"
+      loading="lazy"
+      width="400"
+      height="600"
+      src="{% static 'images/blaze.png' %}"
+    />
   </div>
-</div>
+</section>
+
+<section class="about__info">
+  <h1 class="about__left--title text-4xl md:text-5xl xl:text-6xl">
+      <span class="gradient-letter2">W</span>
+      <span class="gradient-letter2">h</span>
+      <span style="margin-right: -32px;" class="gradient-letter2">o</span>&nbsp;
+      <span class="gradient-letter2">a</span>
+      <span style="margin-right: -32px;" class="gradient-letter2">m</span>&nbsp;
+      <span  class="gradient-letter2">i</span>
+    </h1>
+
+    <hr class="gradient-letter2 border-gray-300 w-32 mx-auto lg:mx-0">
+
+    <p class="about__left--description2">
+      Hey friends, I'm Michael Blaze. A mechanical engineering major turned graphics designer YouTuber, and teacher. I've been creating YouTube videos for over 3 years and have amassed a following of over 80,000 subscribers on my main channel about graphics design.
+    </p>
+
+    <p class="about__left--description2">My focus is primarily on building scalable enterprise applications, especially custom internal tools and dashboards for both my YouTube channel tutorials and for various businesses. As a lead engineer for a publicly traded company who has been developing for nearly a decade now, I cover the full spectrum of development, from frontend technologies like TypeScript, Next.js, and many many more, to backend solutions including database design in both NoSQL and SQL, integration of these systems with cloud services like AWS, all while maintaining high standards of code quality, testing, and security. Above all, I'm passionate about designing user experiences both from a design and scalable perspective that are both elegant and straightforward, yet powerful enough for any user.</p>
+
+    <p class="about__left--description2">
+      My goal in both teaching and software development is to simplify the process of learning and using software. Without all the unnecessary buzzwords and jargon, I aim to make it straightforward for anyone to both grasp how to create and utilize effective applications, and also to create easy-to-understand software for businesses with powerful capabilities.
+    </p>
+  </section>
+
+
+<!-- Footer -->
+<footer class="w-full">
+  <div class="flex items-center justify-center mx-auto w-full max-w-4xl px-4 mb-16">
+    <div class="flex-shrink-0 mr-12">
+      <a class="flex items-center" href="/">
+        <img class="h-10 md:h-12" src="{% static 'favicon.png' %}" alt="Michael Blaze Logo"/>
+      </a>
+    </div>
+    <div class="relative group inline-block self-end mt-6 pb-2 brightness-100">
+      <a target="_blank" class="footer-button font-moderniz" href="https://upwork.com/freelancers/michaelblaze29?mp_source=share">
+        VISIT MY UPWORK PROFILE
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const aboutSection = document.querySelector('.about');
+    
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
+        rect.bottom >= 0
+      );
+    }
+    
+    // Function to handle scroll events
+    function handleScroll() {
+      if (isInViewport(aboutSection) && !aboutSection.classList.contains('visible')) {
+        aboutSection.classList.add('visible');
+        
+        // Trigger letter animations
+        const letters = document.querySelectorAll('.gradient-letter');
+        letters.forEach((letter, index) => {
+          letter.style.animationDelay = `${0.1 + (index * 0.05)}s`;
+        });
+      }
+    }
+    
+    // Initial check in case section is already visible
+    handleScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+  });
+</script>
 
 {% endblock %}

@@ -257,7 +257,7 @@ input[type=file] {
     @apply bg-white pl-0
 }
 
-/* Container for the link */
+/* Container for the skills link */
 .skills-link {
     position: relative;
     display: inline-block;
@@ -266,7 +266,7 @@ input[type=file] {
     font-weight: bold;
 }
 
-/* Popup container */
+/* Skills popup container */
 .skills-popup {
     visibility: hidden;
     opacity: 0;
@@ -341,7 +341,7 @@ input[type=file] {
     border-bottom-color: #333;
 }
 
-/* Button styling */
+/* Skills button styling */
 .skills-button {
     padding: 8px 16px;
     background-color: #007bff;
@@ -355,7 +355,7 @@ input[type=file] {
     background-color: #0056b3;
 }
 
-/* Animation classes */
+/* Animation classes for welcome text */
 .slide-in-left {
     animation: slideInLeft 0.7s ease-out forwards;
     opacity: 0;
@@ -369,7 +369,7 @@ input[type=file] {
     }
 }
 
-/* Delays for sequential animation */
+/* Delays for welcome text sequential animation */
 .welcome-block-1 {
     animation-delay: 0.7s;
 }

@@ -25,17 +25,18 @@
       z-index: -1;
     }
 
+    body {
+        background-color: rgb(41, 44, 92);
+    }
   </style>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="{% block class %}{% endblock %} overflow-x-hidden">
 	
     {% include 'layouts/header.html' %}
-    {% include 'layouts/hero.html' %}
 
     {% block content %}
     <div id="tsparticles"></div>
     {% endblock %}
     
-    {% include 'layouts/footer.html' %}
 
     {% block javascript %}{% endblock %}
 

@@ -1,6 +1,6 @@
 {% extends 'blank.html' %} 
-{% load static %}
-{% block content %} 
+{% load static %} 
+{% block content %}
 
 <style>
   .about {
@@ -60,12 +60,12 @@
     transform: translateX(20px);
     transition: opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s;
   }
-  
+
   .about.visible .about__right {
     opacity: 1;
     transform: translateX(0);
   }
-  
+
   .about__right img {
     width: 100%;
     height: 100%;
@@ -73,7 +73,7 @@
     object-fit: contain;
     transition: transform 1.2s ease;
   }
-  
+
   .about__right:hover img {
     transform: scale(1.03);
   }
@@ -84,15 +84,24 @@
       padding: 60px 20px;
       gap: 40px;
     }
-    
+
     .about__right {
       width: 70%;
       max-width: 300px;
     }
-    
+
     .about__left {
       text-align: center;
     }
+
+  .about__left--description2 {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .about__info {
+    padding: 20px;
+  }
   }
 
   /* Left gradient text effect */
@@ -110,15 +119,31 @@
     margin-right: -0.25em;
   }
 
-    /* Delay each letter */
-  .gradient-letter:nth-child(1) { animation-delay: 0.1s; }
-  .gradient-letter:nth-child(2) { animation-delay: 0.15s; }
-  .gradient-letter:nth-child(3) { animation-delay: 0.2s; }
-  .gradient-letter:nth-child(4) { animation-delay: 0.25s; }
-  .gradient-letter:nth-child(5) { animation-delay: 0.3s; }
-  .gradient-letter:nth-child(6) { animation-delay: 0.35s; }
-  .gradient-letter:nth-child(7) { animation-delay: 0.4s; }
-  .gradient-letter:nth-child(8) { animation-delay: 0.45s; }
+  /* Delay each letter */
+  .gradient-letter:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .gradient-letter:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .gradient-letter:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .gradient-letter:nth-child(4) {
+    animation-delay: 0.25s;
+  }
+  .gradient-letter:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+  .gradient-letter:nth-child(6) {
+    animation-delay: 0.35s;
+  }
+  .gradient-letter:nth-child(7) {
+    animation-delay: 0.4s;
+  }
+  .gradient-letter:nth-child(8) {
+    animation-delay: 0.45s;
+  }
 
   /* Keyframes left */
   @keyframes fadeInLeft {
@@ -139,21 +164,33 @@
     opacity: 0;
     transform: translateX(30px);
     animation-play-state: paused;
-    animation: fadeInLeft 3.6s ease forwards;
+    animation: fadeInRight 3.6s ease forwards;
     font-size: inherit;
     margin-right: -0.25em;
   }
 
   /* Delay each letter */
-  .gradient-letter2:nth-child(1) { animation-delay: 3.1s; }
-  .gradient-letter2:nth-child(2) { animation-delay: 3.15s; }
-  .gradient-letter2:nth-child(3) { animation-delay: 3.2s; }
-  .gradient-letter2:nth-child(4) { animation-delay: 3.25s; }
-  .gradient-letter2:nth-child(5) { animation-delay: 3.3s; }
-  .gradient-letter2:nth-child(6) { animation-delay: 3.35s; }
+  .gradient-letter2:nth-child(1) {
+    animation-delay: 3.1s;
+  }
+  .gradient-letter2:nth-child(2) {
+    animation-delay: 3.15s;
+  }
+  .gradient-letter2:nth-child(3) {
+    animation-delay: 3.2s;
+  }
+  .gradient-letter2:nth-child(4) {
+    animation-delay: 3.25s;
+  }
+  .gradient-letter2:nth-child(5) {
+    animation-delay: 3.3s;
+  }
+  .gradient-letter2:nth-child(6) {
+    animation-delay: 3.35s;
+  }
 
   /* Keyframes right */
-   @keyframes fadeInLeft {
+  @keyframes fadeInRight {
     to {
       opacity: 1;
       transform: translateX(0);
@@ -164,7 +201,7 @@
     opacity: 0;
     transition: opacity 0.6s ease-out 0.6s;
   }
-  
+
   .about.visible hr.my-16 {
     opacity: 1;
   }
@@ -187,7 +224,11 @@
       <span class="gradient-letter">u</span>
       <span class="gradient-letter">t</span>&nbsp;
       <span class="gradient-letter">M</span>
-      <span class="gradient-letter">e</span>&nbsp;<span style="margin-left: -4px;" class="gradient-letter">.</span>
+      <span class="gradient-letter">e</span>&nbsp;<span
+        style="margin-left: -4px"
+        class="gradient-letter"
+        >.</span
+      >
     </h1>
 
     <h3 class="about__left--description">
@@ -196,11 +237,11 @@
     </h3>
     <p class="about__left--description2">
       I'm also a video creator focusing on teaching web development and building
-      software applications. I specialize in simplifying the process of building 
-      enterprise applications with an emphasis on creating intuitive dashboards 
+      software applications. I specialize in simplifying the process of building
+      enterprise applications with an emphasis on creating intuitive dashboards
       for both educational purposes and business solutions.
     </p>
-    <hr class="my-16 border-gray-300 w-32 mx-auto lg:mx-0">
+    <hr class="my-16 border-gray-300 w-32 mx-auto lg:mx-0" />
   </div>
 
   <div class="about__right">
@@ -216,38 +257,67 @@
 
 <section class="about__info">
   <h1 class="about__left--title text-4xl md:text-5xl xl:text-6xl">
-      <span class="gradient-letter2">W</span>
-      <span class="gradient-letter2">h</span>
-      <span style="margin-right: -32px;" class="gradient-letter2">o</span>&nbsp;
-      <span class="gradient-letter2">a</span>
-      <span style="margin-right: -32px;" class="gradient-letter2">m</span>&nbsp;
-      <span  class="gradient-letter2">i</span>
-    </h1>
+    <span class="gradient-letter2">W</span>
+    <span class="gradient-letter2">h</span>
+    <span style="margin-right: -32px" class="gradient-letter2">o</span>&nbsp;
+    <span class="gradient-letter2">a</span>
+    <span style="margin-right: -32px" class="gradient-letter2">m</span>&nbsp;
+    <span class="gradient-letter2">i</span>
+  </h1>
 
-    <hr class="gradient-letter2 border-gray-300 w-32 mx-auto lg:mx-0">
+  <hr class="gradient-letter2 border-gray-300 w-32 mx-auto lg:mx-0" />
 
-    <p class="about__left--description2">
-      Hey friends, I'm Michael Blaze. A mechanical engineering major turned graphics designer YouTuber, and teacher. I've been creating YouTube videos for over 3 years and have amassed a following of over 80,000 subscribers on my main channel about graphics design.
-    </p>
+  <p class="about__left--description2">
+    Hey friends, I'm <span style="color: rgb(251, 255, 0);">Michael Blaze</span>. A mechanical engineering major turned
+    <span style="color: rgb(52, 250, 45);">graphics designer</span>, YouTuber, and teacher. I've been creating YouTube videos
+    for over 3 years and have amassed a following of over 80,000 subscribers on
+    my main channel about graphics design.
+  </p>
 
-    <p class="about__left--description2">My focus is primarily on building scalable enterprise applications, especially custom internal tools and dashboards for both my YouTube channel tutorials and for various businesses. As a lead engineer for a publicly traded company who has been developing for nearly a decade now, I cover the full spectrum of development, from frontend technologies like TypeScript, Next.js, and many many more, to backend solutions including database design in both NoSQL and SQL, integration of these systems with cloud services like AWS, all while maintaining high standards of code quality, testing, and security. Above all, I'm passionate about designing user experiences both from a design and scalable perspective that are both elegant and straightforward, yet powerful enough for any user.</p>
+  <p class="about__left--description2">
+    My focus is primarily on building scalable enterprise applications,
+    especially custom internal tools and dashboards for both my YouTube channel
+    tutorials and for various businesses. As a lead engineer for a publicly
+    traded company who has been developing for nearly a decade now, I cover the
+    full spectrum of development, from frontend technologies like TypeScript,
+    Next.js, and many many more, to backend solutions including database design
+    in both NoSQL and SQL, integration of these systems with cloud services like
+    AWS, all while maintaining high standards of code quality, testing, and
+    security. Above all, I'm passionate about designing user experiences both
+    from a design and scalable perspective that are both elegant and
+    straightforward, yet powerful enough for any user.
+  </p>
 
-    <p class="about__left--description2">
-      My goal in both teaching and software development is to simplify the process of learning and using software. Without all the unnecessary buzzwords and jargon, I aim to make it straightforward for anyone to both grasp how to create and utilize effective applications, and also to create easy-to-understand software for businesses with powerful capabilities.
-    </p>
-  </section>
-
+  <p class="about__left--description2">
+    My goal in both teaching and software development is to simplify the process
+    of learning and using software. Without all the unnecessary buzzwords and
+    jargon, I aim to make it straightforward for anyone to both grasp how to
+    create and utilize effective applications, and also to create
+    easy-to-understand software for businesses with powerful capabilities.
+  </p>
+</section>
 
 <!-- Footer -->
 <footer class="w-full">
-  <div class="flex items-center justify-center mx-auto w-full max-w-4xl px-4 mb-16">
+  <div
+    class="flex items-center justify-center mx-auto w-full max-w-4xl px-4 mb-16"
+  >
     <div class="flex-shrink-0 mr-12">
       <a class="flex items-center" href="/">
-        <img class="h-10 md:h-12" src="{% static 'favicon.png' %}" alt="Michael Blaze Logo"/>
+        <img
+          class="h-10 md:h-12"
+          src="{% static 'favicon.png' %}"
+          alt="Michael Blaze Logo"
+        />
       </a>
     </div>
     <div class="relative group inline-block self-end mt-6 pb-2 brightness-100">
-      <a target="_blank" class="footer-button font-moderniz" href="https://upwork.com/freelancers/michaelblaze29?mp_source=share">
+      <a
+        target="_blank"
+        class="footer-button font-moderniz"
+        href="https://upwork.com/freelancers/michaelblaze29?mp_source=share"
+        aria-label="Visit my Upwork profile"
+      >
         VISIT MY UPWORK PROFILE
       </a>
     </div>
@@ -255,36 +325,49 @@
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const aboutSection = document.querySelector('.about');
-    
+  document.addEventListener("DOMContentLoaded", function () {
+    const aboutSection = document.querySelector(".about");
+    const infoSection = document.querySelector(".about__info");
+
     // Function to check if element is in viewport
     function isInViewport(element) {
       const rect = element.getBoundingClientRect();
       return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
-        rect.bottom >= 0
+        rect.top <=
+          (window.innerHeight || document.documentElement.clientHeight) *
+            0.75 && rect.bottom >= 0
       );
     }
-    
+
     // Function to handle scroll events
     function handleScroll() {
-      if (isInViewport(aboutSection) && !aboutSection.classList.contains('visible')) {
-        aboutSection.classList.add('visible');
-        
+      if (
+        isInViewport(aboutSection) &&
+        !aboutSection.classList.contains("visible")
+      ) {
+        aboutSection.classList.add("visible");
+
+        if (isInViewport(infoSection)) {
+          const letters = document.querySelectorAll(".gradient-letter2");
+          letters.forEach((letter, index) => {
+            letter.style.animationDelay = `${0.1 + index * 0.05}s`;
+            letter.style.animationPlayState = "running";
+          });
+        }
+
         // Trigger letter animations
-        const letters = document.querySelectorAll('.gradient-letter');
+        const letters = document.querySelectorAll(".gradient-letter");
         letters.forEach((letter, index) => {
-          letter.style.animationDelay = `${0.1 + (index * 0.05)}s`;
+          letter.style.animationDelay = `${0.1 + index * 0.05}s`;
         });
       }
     }
-    
+
     // Initial check in case section is already visible
     handleScroll();
-    
+
     // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
   });
 </script>
 

@@ -1,0 +1,53 @@
+{% extends 'blank2.html' %}
+{% load static %}
+{% block title %}MichaelBlaze - Logo Branding{% endblock title %}
+{% block content %}
+<style>
+    .logo {
+        padding: 100px;
+        margin: 0;
+        box-sizing: border-box;
+        object-fit: contain;
+    }
+
+    .logo__hero--title {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: white;
+    }
+
+    .logo__info {
+        padding: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .logo__info img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+</style>
+<section class="logo bg-image">
+    <div class="logo__hero">
+        <h1 class="logo__hero--title">
+            <span>B</span>
+            <span>R</span>
+            <span>A</span>
+            <span>N</span>
+            <span>D</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G</span>
+        </h1>
+    </div>
+</section>
+
+<section class="logo__info">
+    <img src="{% static 'images/logo_info.jpg' %}" alt="Logo branding images">
+</section>
+{% endblock content %}

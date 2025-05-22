@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.HomePageView.as_view(), name='home'),
     path('about/', views.AboutPageView.as_view(), name='about'),
     path('post/detail/<str:pk>/', views.PostDetailView.as_view(), name='post_detail'),
+    path('logo/', views.LogoPageView.as_view(), name='logo'),
     ]

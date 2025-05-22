@@ -24,3 +24,8 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "a_posts/post_detail.html"
     context_object_name = "post"
+
+
+class LogoPageView(TemplateView):
+    page = "logo"
+    template_name = 'a_home/logo_detail.html'

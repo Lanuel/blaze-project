@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = Environment = "production"
+DEBUG = ENVIRONMENT != "production"
 
 INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
 ALLOWED_HOSTS = ['*']
@@ -93,7 +93,12 @@ DATABASES = {
 }
 
 if ENVIRONMENT == 'production' or env.bool('POSTGRES_LOCALLY', default=False):
-    DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
+    DATABASE_URL = env('DATABASE_URL', default=None)
+    if DATABASE_URL:
+        DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+    else:
+        raise ValueError("DATABASE_URL not found in environment for production.")
+
     
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -120,6 +125,10 @@ if ENVIRONMENT == 'production' or DEBUG == False:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = "DENY" 
+
     
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -152,7 +161,7 @@ if USE_CLOUDINARY:
     CLOUDINARY_STORAGE = {
         'CLOUDINARY_URL': env('CLOUDINARY_URL'),
         'OPTIONS': {
-        'secure': True,  # ✅ Correct key and location
+        'secure': True,  
     },
     }
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"

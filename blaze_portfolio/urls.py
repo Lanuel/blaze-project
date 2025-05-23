@@ -14,12 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from a_home.views import custom_404
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from a_home.views import custom_404
+from django.conf.urls import handler404
 
+handler404 = custom_404
 
 urlpatterns = [
     path('3vablazin/', admin.site.urls),

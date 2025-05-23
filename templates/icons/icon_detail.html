@@ -1,0 +1,15 @@
+{% extends "blank2.html" %}
+{% block content %}
+    <!-- Common layout wrapper if needed -->
+    <section class="icon-detail">
+        {% include "icons/partials/"|add:page|add:".html" %}
+    </section>
+{% endblock %}
+
+<!-- 
+{% if template_exists %}
+            {% include "icons/partials/"|add:page|add:".html" %}
+        {% else %}
+            <p>This icon's page is under construction.</p>
+        {% endif %}
+-->

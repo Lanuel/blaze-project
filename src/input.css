@@ -695,3 +695,32 @@ hr.my-16 {
   gap: 40px;
   align-items: center;
 }
+
+/* Icons branding CSS */
+.icon {
+        padding: 100px;
+        margin: 0;
+        box-sizing: border-box;
+        object-fit: contain;
+    }
+
+    .icon__hero--title {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: white;
+    }
+
+    .icon__info {
+        padding: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+    }
+
+    .icon__info img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }

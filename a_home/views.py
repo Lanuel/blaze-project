@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import *
 
@@ -26,6 +26,10 @@ class PostDetailView(DetailView):
     context_object_name = "post"
 
 
-class LogoPageView(TemplateView):
-    page = "logo"
-    template_name = 'a_home/logo_detail.html'
+def icon_detail(request, icon_id):
+    icon = get_object_or_404(Icon, pk=icon_id)
+    context = {
+        'icon': icon,
+        'page': icon.title.lower()
+    }
+    return render(request, 'icons/icon_detail.html', context)

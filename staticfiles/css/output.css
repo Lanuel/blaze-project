@@ -648,10 +648,6 @@
   .text-center {
     text-align: center;
   }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
@@ -691,14 +687,6 @@
   .tracking-\[0\.5rem\] {
     --tw-tracking: 0.5rem;
     letter-spacing: 0.5rem;
-  }
-  .tracking-\[1\.5rem\] {
-    --tw-tracking: 1.5rem;
-    letter-spacing: 1.5rem;
-  }
-  .tracking-wide {
-    --tw-tracking: var(--tracking-wide);
-    letter-spacing: var(--tracking-wide);
   }
   .tracking-wider {
     --tw-tracking: var(--tracking-wider);
@@ -1535,6 +1523,30 @@ hr.my-16 {
   flex-direction: column;
   gap: 40px;
   align-items: center;
+}
+.icon {
+  padding: 100px;
+  margin: 0;
+  box-sizing: border-box;
+  object-fit: contain;
+}
+.icon__hero--title {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+}
+.icon__info {
+  padding: 0;
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+}
+.icon__info img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 @property --tw-rotate-x {
   syntax: "*";

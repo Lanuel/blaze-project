@@ -1,6 +1,5 @@
-{% extends 'blank2.html' %}
 {% load static %}
-{% block title %}MichaelBlaze - Logo Branding{% endblock title %}
+<!-- {% block title %} MichaelBlaze - Logo Branding {% endblock title %} -->
 {% block content %}
 <style>
     .logo {
@@ -21,7 +20,7 @@
         padding: 0;
         width: 100%;
         height: auto;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
 
     .logo__info img {
@@ -32,6 +31,7 @@
     }
 
 </style>
+
 <section class="logo bg-image">
     <div class="logo__hero">
         <h1 class="logo__hero--title">
@@ -48,6 +48,7 @@
 </section>
 
 <section class="logo__info">
-    <img src="{% static 'images/logo_info.jpg' %}" alt="Logo branding images">
+    <img src="{% static 'images/logo_info.jpg' %}" alt="Logo branding images" fetchpriority="high">
 </section>
+
 {% endblock content %}

@@ -21,6 +21,7 @@ class Post(models.Model):
 class Icon(models.Model):
     title = models.CharField(max_length=50)
     image = CloudinaryField('icon_images/', null=True)
+    id = models.CharField(max_length=100, default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
     def __str__(self):
         return self.title

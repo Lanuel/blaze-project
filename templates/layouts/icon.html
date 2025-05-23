@@ -8,7 +8,9 @@
             {% for icon in icons %}
                 <div class="carousel-item">
                     <div class="carousel-content">
-                        <img src="{{ icon.image.url }}" alt="{{ icon.title }}">
+                        <a href="{% url 'icon' icon.id %}">
+                            <img src="{{ icon.image.url }}" alt="{{ icon.title }}">
+                        </a>
                     </div>
                 </div>
             {% endfor %}

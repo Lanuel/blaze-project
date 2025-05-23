@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
 
 class IconAdmin(admin.ModelAdmin):
     model = Icon
-    list_display = ['title', 'image']
+    list_display = ['title', 'image', id]
 
 
 admin.site.register(Post, PostAdmin)

@@ -1,23 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Django Template">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Django Template" />
     <title>MichaelBlaze Graphics</title>
-    <link rel="icon" type="image/x-icon" sizes="48x48" href="{% static 'favicon2.png' %}">
-    <link rel="stylesheet" href="{% static 'css/output.css' if debug else 'css/output.min.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="48x48"
+      href="{% static 'favicon.png' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/output.css' if debug else 'css/output.min.css' %}"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-snow@3.0.0/tsparticles.preset.snow.bundle.min.js"></script>
     <!-- GLightbox CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+  </head>
   <style>
-
     #tsparticles {
-      position:fixed;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -26,47 +39,46 @@
     }
 
     body {
-        background-color: rgb(41, 44, 92);
+      background-color: rgb(41, 44, 92);
     }
   </style>
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="{% block class %}{% endblock %} overflow-x-hidden">
-	
-    {% include 'layouts/header.html' %}
-
-    {% block content %}
+  <body
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    class="{% block class %}{% endblock %} overflow-x-hidden"
+  >
+    {% include 'layouts/header.html' %} {% block content %}
     <div id="tsparticles"></div>
-    {% endblock %}
-    
+    {% endblock %} {% block javascript %}{% endblock %}
 
-    {% block javascript %}{% endblock %}
-
-<script>
-  tsParticles.load({
-    id: "tsparticles",
-    options: {
-        background: {
-      color: "transparent"
-    },
-      preset: "snow",
-      particles: {
-        number: {
-          value: 10 
-        },
-        size: {
-          value: { min: 0.5, max: 1.7 }
-        },
-        color: {
-          value: "#ffffff" // white snow
-        },
-        opacity: {
-          value: { min: 0.3, max: 90.4 }
-        },
-      }
-    }
-  }).then(() => console.log("tsParticles loaded"))
-    .catch(err => console.error("tsParticles error:", err));
-</script>
+    <script>
+      tsParticles
+        .load({
+          id: "tsparticles",
+          options: {
+            background: {
+              color: "transparent",
+            },
+            preset: "snow",
+            particles: {
+              number: {
+                value: 10,
+              },
+              size: {
+                value: { min: 0.5, max: 1.7 },
+              },
+              color: {
+                value: "#ffffff", // white snow
+              },
+              opacity: {
+                value: { min: 0.3, max: 90.4 },
+              },
+            },
+          },
+        })
+        .then(() => console.log("tsParticles loaded"))
+        .catch((err) => console.error("tsParticles error:", err));
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-</body>
+  </body>
 </html>

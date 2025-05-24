@@ -19,13 +19,20 @@ env.read_env()
 ENVIRONMENT = env('ENVIRONMENT', default='production')
 USE_CLOUDINARY = env.bool('USE_CLOUDINARY', default=False)
 
+# Validate required environment variables
+required_env_vars = ['SECRET_KEY']
+if ENVIRONMENT == 'production':
+    required_env_vars.extend(['DATABASE_URL'])
+if USE_CLOUDINARY:
+    required_env_vars.append('CLOUDINARY_URL')
 
+for var in required_env_vars:
+    if not env(var, default=None):
+        raise ValueError(f"Environment variable {var} is required but not set.")
+    
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -33,12 +40,13 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENVIRONMENT != "production"
 
-INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+if DEBUG:
+    INTERNAL_IPS = ['localhost:8000', '127.0.0.1']
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1']) if ENVIRONMENT != 'production' else env.list('ALLOWED_HOSTS')
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -128,6 +136,10 @@ if ENVIRONMENT == 'production' or DEBUG == False:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = "DENY" 
+    SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+    SESSION_COOKIE_AGE = 1209600  
+    SESSION_COOKIE_SAMESITE = 'Strict'
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     
 # Internationalization
@@ -166,11 +178,59 @@ if USE_CLOUDINARY:
     }
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 else:
+    STORAGES = {
+        'default': {
+            'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        },
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        },
+    }
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logging
+LOGS_DIR = BASE_DIR / 'logs'
+LOGS_DIR.mkdir(exist_ok=True)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {name}: {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': LOGS_DIR / 'error.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

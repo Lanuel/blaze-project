@@ -1,6 +1,82 @@
 @import "./fonts.css";
 @import "tailwindcss";
 
+body {
+  @apply bg-black;
+  font-family: "Futura-medium";
+}
+
+@keyframes slowPan {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+.animate-slow-pan {
+  animation: slowPan 25s linear infinite alternate;
+}
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+h2 {
+  @apply text-xl font-bold mb-2;
+}
+
+h3 {
+  @apply text-lg font-bold text-sky-500;
+}
+
+.button,
+button,
+[type="submit"],
+[type="button"] {
+  @apply bg-sky-500 text-black font-bold rounded-lg shadow-lg transition-all cursor-pointer;
+}
+
+.button,
+button a,
+[type="submit"],
+[type="button"] {
+  @apply px-4 py-1 inline-block;
+}
+
+.footer-button,
+button,
+[type="submit"],
+[type="button"] {
+  @apply bg-green-500 text-white rounded-xl shadow-lg transition-all cursor-pointer;
+}
+
+.footer-button,
+button a,
+[type="submit"],
+[type="button"] {
+  @apply px-4 py-1 inline-block;
+}
+
+.button:hover,
+button:hover,
+[type="submit"]:hover,
+[type="button"]:hover {
+  @apply bg-rose-800 text-white;
+}
+
+.button:active,
+button:active,
+[type="submit"]:active,
+[type="button"]:active {
+  @apply scale-95;
+}
+
+input[type="file"] {
+  @apply bg-white pl-0;
+}
+
 .hero {
   padding: 50px 150px 50px 150px;
   display: flex;
@@ -240,90 +316,10 @@
   }
 }
 
-.wide-text {
-  transform: scaleX(1.7);
-  display: block;
-  transform-origin: left;
-}
-.wide-text1 {
-  transform: scaleX(1.6);
-  display: block;
-  transform-origin: left;
-}
-
 .bg-image {
   background-image: url("../images/bg_image.gif");
   background-size: cover;
   background-position: center;
-}
-
-body {
-  @apply bg-black;
-  font-family: "Futura-medium";
-}
-
-@keyframes slowPan {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-5%);
-  }
-}
-
-.animate-slow-pan {
-  animation: slowPan 25s linear infinite alternate;
-}
-
-h1 {
-  @apply text-4xl font-bold;
-}
-h2 {
-  @apply text-xl font-bold mb-2;
-}
-h3 {
-  @apply text-lg font-bold text-sky-500;
-}
-
-.button,
-button,
-[type="submit"],
-[type="button"] {
-  @apply bg-sky-500 text-black font-bold rounded-lg shadow-lg transition-all cursor-pointer;
-}
-.button,
-button a,
-[type="submit"],
-[type="button"] {
-  @apply px-4 py-1 inline-block;
-}
-.footer-button,
-button,
-[type="submit"],
-[type="button"] {
-  @apply bg-green-500 text-white rounded-xl shadow-lg transition-all cursor-pointer;
-}
-.footer-button,
-button a,
-[type="submit"],
-[type="button"] {
-  @apply px-4 py-1 inline-block;
-}
-.button:hover,
-button:hover,
-[type="submit"]:hover,
-[type="button"]:hover {
-  @apply bg-rose-800 text-white;
-}
-.button:active,
-button:active,
-[type="submit"]:active,
-[type="button"]:active {
-  @apply scale-95;
-}
-
-input[type="file"] {
-  @apply bg-white pl-0;
 }
 
 /* Container for the skills link */
@@ -698,29 +694,45 @@ hr.my-16 {
 
 /* Icons branding CSS */
 .icon {
-        padding: 100px;
-        margin: 0;
-        box-sizing: border-box;
-        object-fit: contain;
-    }
+  padding: 100px;
+  margin: 0;
+  box-sizing: border-box;
+  object-fit: contain;
+}
 
-    .icon__hero--title {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        color: white;
-    }
+.icon__hero--title {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+}
 
-    .icon__info {
-        padding: 0;
-        width: 100%;
-        height: auto;
-        margin-bottom: 50px;
-    }
+.icon__info {
+  padding: 0;
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+}
 
-    .icon__info img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
+.icon__info img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Stats CSSS */
+.rounded__border {
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(179, 179, 179);
+  border-radius: 10px;
+  margin: 50px 140px 70px;
+}
+@media (max-width: 768px) {
+  .rounded__border {
+    margin: 30px 20px;
+    padding: 30px;
+  }
+}

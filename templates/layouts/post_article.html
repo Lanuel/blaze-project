@@ -27,7 +27,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 75%;
+        height: 100%;
         border: 2px solid white;
         z-index: 10;
         pointer-events: none;
@@ -61,13 +61,13 @@
     }
 </style>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-12 px-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-12 mb-10">
 
     <!-- FRAME 1 -->
     <div class="relative h-72 sm:h-80 md:h-96 overflow-hidden">
         <div class="frame-fall-out" style="animation-delay: 2.3s;"></div>
 
-        <a href="#" class="block w-full h-[75%] relative z-20">
+        <a href="#" class="block w-full h-full relative z-20">
             <div class="absolute inset-0 overflow-hidden group">
                 <div class="image-container image-rise-up h-full w-full" style="animation-delay: 2.5s;">
                     <img src="{% static 'images/Vectorize.gif' %}" 
@@ -89,7 +89,7 @@
     <div class="relative h-72 sm:h-80 md:h-96 overflow-hidden">
         <div class="frame-fall-out" style="animation-delay: 2.7s;"></div>
 
-        <a href="#" class="block w-full h-[75%] relative z-20">
+        <a href="#" class="block w-full h-full relative z-20">
             <div class="absolute inset-0 overflow-hidden group">
                 <div class="image-container image-rise-up h-full w-full" style="animation-delay: 2.9s;">
                     <img src="{% static 'images/image2.jpg' %}" 
@@ -111,7 +111,7 @@
     <div class="relative h-72 sm:h-80 md:h-96 overflow-hidden">
         <div class="frame-fall-out" style="animation-delay: 3.1s;"></div>
 
-        <a href="#" class="block w-full h-[75%] relative z-20">
+        <a href="#" class="block w-[full] h-full relative z-20">
             <div class="absolute inset-0 overflow-hidden group">
                 <div class="image-container image-rise-up h-full w-full" style="animation-delay: 3.3s;">
                     <img src="{% static 'images/image3.jpg' %}" 

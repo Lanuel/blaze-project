@@ -54,7 +54,31 @@
 
     {% endblock %} 
     
-    {% include 'layouts/footer.html' %}
+    <!-- Footer -->
+    <footer
+      class="w-full items-center justify-center bg-slate-950 min-h-[150px] py-12"
+    >
+      <div class="flex items-center justify-center mx-auto">
+        <div class="flex-shrink-0 mr-12">
+          <a class="flex items-center" href="/">
+            <img
+              class="h-10 md:h-12"
+              src="{% static 'favicon.png' %}"
+              alt="Michael Blaze Logo"
+            />
+          </a>
+        </div>
+        <div class="relative group inline-block self-end mt-6 pb-2 brightness-100">
+          <a
+            target="_blank"
+            class="footer-button font-moderniz"
+            href="https://upwork.com/freelancers/michaelblaze29?mp_source=share"
+          >
+            VISIT MY UPWORK PROFILE
+          </a>
+        </div>
+      </div>
+    </footer>
     
     {% block javascript %}
     {% endblock %}

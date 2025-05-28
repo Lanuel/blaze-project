@@ -76,7 +76,6 @@
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -659,10 +658,6 @@
     --tw-tracking: 0.4rem;
     letter-spacing: 0.4rem;
   }
-  .tracking-\[0\.5rem\] {
-    --tw-tracking: 0.5rem;
-    letter-spacing: 0.5rem;
-  }
   .tracking-wider {
     --tw-tracking: var(--tracking-wider);
     letter-spacing: var(--tracking-wider);
@@ -838,10 +833,10 @@
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
   }
-  .md\:tracking-\[0\.8rem\] {
+  .md\:tracking-\[0\.7rem\] {
     @media (width >= 48rem) {
-      --tw-tracking: 0.8rem;
-      letter-spacing: 0.8rem;
+      --tw-tracking: 0.7rem;
+      letter-spacing: 0.7rem;
     }
   }
   .lg\:mx-0 {

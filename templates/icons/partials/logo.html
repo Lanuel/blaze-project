@@ -1,101 +1,6 @@
 {% load static %}
 {% block content %}
-<style>
-    .logo {
-        padding: 100px;
-        margin: 0;
-        box-sizing: border-box;
-    }
 
-    .logo__hero--title {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        color: white;
-        font-size: 4rem;
-        font-weight: bold;
-        letter-spacing: 0.2em;
-    }
-
-    .logo__info {
-        padding: 0 180px;
-        width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-    }
-
-    .logo__info img {
-        object-fit: contain;
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    /* Tablet styles */
-    @media (max-width: 768px) {
-        .logo {
-            padding: 60px;
-        }
-
-        .logo__hero--title {
-            font-size: 3rem;
-            letter-spacing: 0.15em;
-        }
-
-        .logo__info {
-            padding: 0 70px;
-            margin-bottom: 15px;
-        }
-    }
-
-    /* Mobile styles */
-    @media (max-width: 480px) {
-        .logo {
-            padding: 50px 40px;
-        }
-
-        .logo__hero--title {
-            font-size: 1.5rem;
-            letter-spacing: 0.1em;
-            justify-content: space-between;
-        }
-
-        .logo__info {
-            padding: 0 40px;
-            margin-bottom: 10px;
-        }
-    }
-
-    /* Very small mobile styles */
-    @media (max-width: 320px) {
-        .logo {
-            padding: 30px 15px;
-        }
-
-        .logo__hero--title {
-            font-size: 1.5rem;
-            letter-spacing: 0.05em;
-            flex-wrap: wrap;
-            gap: 5px;
-            justify-content: center;
-        }
-
-        .logo__info {
-            padding: 0 15px;
-        }
-    }
-
-    /* Desktop Styles */
-    @media (min-width: 1024px) {
-        .logo {
-            padding: 100px;
-        }
-
-        .logo__info {
-            padding: 0 180px;
-        }
-    }
-</style>
 
 <section class="logo bg-image">
     <div class="logo__hero">
@@ -113,7 +18,7 @@
 </section>
 
 <section class="logo__info">
-    <img src="{% static 'images/logo_info.jpg' %}" alt="Logo branding images" fetchpriority="high">
+    <img src="{% static 'images/logo_info2.png' %}" alt="Logo branding images" fetchpriority="high">
 </section>
 
 {% endblock content %}

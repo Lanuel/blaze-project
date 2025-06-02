@@ -31,18 +31,10 @@ h3 {
   @apply text-lg font-bold text-sky-500;
 }
 
-.button,
-button,
-[type="submit"],
-[type="button"] {
-  @apply bg-sky-500 text-black font-bold rounded-lg shadow-lg transition-all cursor-pointer;
-}
 
-.button,
-button a,
-[type="submit"],
-[type="button"] {
-  @apply px-4 py-1 inline-block;
+
+.button-gray {
+    @apply !bg-gray-300 hover:!bg-[#c3c9d0]
 }
 
 .footer-button,
@@ -736,3 +728,113 @@ hr.my-16 {
     padding: 30px;
   }
 }
+
+/* Icon templates CSS */
+    .logo {
+        padding: 100px;
+        margin: 0;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .logo__hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo__hero--title,
+    .logo__hero--title2 {
+        color: white;
+        font-size: 4rem;
+        font-weight: bold;
+        letter-spacing: 0.2em;
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo__hero--title2 {
+        letter-spacing: 0.8em;
+    }
+
+    .logo__info {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: -44px; /* Equivalent to -translate-y-11 */
+        z-index: 10;
+        margin-bottom: 120px;
+    }
+
+    .logo__info img {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Tablet styles */
+    @media (max-width: 768px) {
+        .logo {
+            padding: 60px;
+        }
+
+        .logo__hero--title,
+        .logo__hero--title2 {
+            font-size: 3rem;
+            letter-spacing: 0.15em;
+        }
+
+        .logo__info {
+            margin-top: -33px;
+        }
+    }
+
+    /* Mobile styles */
+    @media (max-width: 480px) {
+        .logo {
+            padding: 50px 40px;
+        }
+
+        .logo__hero--title,
+        .logo__hero--title2 {
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .logo__info {
+            padding: 0 40px;
+            margin-top: -22px;
+        }
+    }
+
+    /* Very small mobile styles */
+    @media (max-width: 320px) {
+        .logo {
+            padding: 30px 15px;
+        }
+
+        .logo__hero--title,
+        .logo__hero--title2 {
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .logo__info {
+            padding: 0 15px;
+            margin-top: -16px;
+        }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 1024px) {
+        .logo {
+            padding: 100px;
+        }
+
+        .logo__info {
+            padding: 0 180px;
+        }
+    }

@@ -1,15 +1,73 @@
 {% extends "blank2.html" %}
 {% block content %}
-    <!-- Common layout wrapper if needed -->
-    <section class="icon-detail">
+<style>
+    /* Navigation to Top Button Styles */
+    #nav-top {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 1000;
+    }
+
+    #nav-top .button-gray {
+        padding: 12px 20px;
+        background-color: #f3f4f6;
+        color: #000;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #nav-top .button-gray:hover {
+        background-color: #e5e7eb;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Smooth scrolling for the entire page */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Common layout wrapper */
+    .icon-detail {
+        margin-bottom: 40px;
+    }
+</style>
+
+    <!-- Common layout wrapper -->
+    <section class="icon-detail mb-10">
         {% include "icons/partials/"|add:page|add:".html" %}
     </section>
-{% endblock %}
 
-<!-- 
-{% if template_exists %}
-            {% include "icons/partials/"|add:page|add:".html" %}
-        {% else %}
-            <p>This icon's page is under construction.</p>
-        {% endif %}
--->
+    <div id="nav-top">
+        <button class="button-gray text-black font-bold" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Go to Top</button>
+    </div>
+
+<script>
+    // Alternative JavaScript implementation for better browser support
+    document.addEventListener('DOMContentLoaded', function() {
+        const topButton = document.querySelector('#nav-top .button-gray');
+        if (topButton) {
+            topButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Optional: Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                topButton.style.display = 'block';
+            } else {
+                topButton.style.display = 'none';
+            }
+        });
+    });
+</script>
+{% endblock %}

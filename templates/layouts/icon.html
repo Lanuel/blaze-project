@@ -11,6 +11,7 @@
                         <a href="{% url 'icon' icon.id %}">
                             <img src="{{ icon.image.url }}" alt="{{ icon.title }}">
                         </a>
+                        <p class="carousel-title">{{ icon.title }}</p>
                     </div>
                 </div>
             {% endfor %}

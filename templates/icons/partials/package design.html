@@ -1,0 +1,30 @@
+{% load static %}
+{% block content %}
+
+<section class="logo bg-image">
+    <div class="logo__hero">
+        <h1 class="logo__hero--title">
+            <span>P</span>
+            <span>A</span>
+            <span>C</span>
+            <span>K</span>
+            <span>A</span>
+            <span>G</span>
+            <span>E</span>
+        </h1>
+        <h1 class="logo__hero--title2">
+            <span>D</span>
+            <span>E</span>
+            <span>S</span>
+            <span>I</span>
+            <span>G</span>
+            <span>N</span>
+        </h1>
+    </div>
+</section>
+
+<section class="logo__info">
+    <img src="{% static 'images/package.png' %}" alt="Package branding images" fetchpriority="high">
+</section>
+
+{% endblock content %}

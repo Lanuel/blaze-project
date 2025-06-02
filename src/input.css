@@ -677,7 +677,7 @@ hr.my-16 {
 }
 
 .about__info {
-  padding: 30px 300px 50px 300px;
+  padding: 30px 300px 80px 300px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -806,7 +806,7 @@ hr.my-16 {
 
         .logo__info {
             padding: 0 40px;
-            margin-top: -22px;
+            margin-top: -11px;
         }
     }
 
@@ -824,7 +824,7 @@ hr.my-16 {
 
         .logo__info {
             padding: 0 15px;
-            margin-top: -16px;
+            margin-top: -11px;
         }
     }
 

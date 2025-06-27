@@ -100,10 +100,19 @@ DATABASES = {
     }
 }
 
-if ENVIRONMENT == 'production' or env.bool('POSTGRES_LOCALLY', default=False):
+if ENVIRONMENT == 'production':
     DATABASE_URL = env('DATABASE_URL', default=None)
     if DATABASE_URL:
-        DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+        DATABASES['default'] = dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,  # persistent connections
+            ssl_require=True
+        )
+        
+        # Add support for using separate schemas cleanly
+        DATABASES['default']['OPTIONS'] = {
+            'options': '-c search_path=public,michael_blaze'  
+        }
     else:
         raise ValueError("DATABASE_URL not found in environment for production.")
 
